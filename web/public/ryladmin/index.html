@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-Equiv="Cache-Control" Content="no-cache">
+
+
+    <title>Graph for CEO</title>
+</head>
+<body>
+	<div id="showmess" style="color:Tomato; font-size:100%;">
+		Please Wait..
+	</div>
+
+<!-- <iframe width="754.5" height="466.5325" seamless="" frameborder="0" scrolling="no" src=""></iframe> -->
+<iframe id="myFrame" src="" height="550" width="100%" frameborder="0" ></iframe> 
+<!-- <iframe width="343.8571428571429" height="317.9475" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRoIit984a55vcrsG3m2JOvYThkOnViUFn8c-VEgHpJfi3tQGc1S7bBtUmoOzZfT_SZQsIdhWn0KtDK/pubchart?oid=990891266&amp;format=interactive"></iframe> -->
+    <!-- Load LIFF SDK -->
+       <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+      
+
+
+	   <script >
+window.onload = function() {
+    const useNodeJS = false;   // if you are not using a node server, set this value to false
+    const defaultLiffId = "1653884182-8ZkwGJ61";   // change the default LIFF value if you are not using a node server
+
+          myLiffId = defaultLiffId;
+        initializeLiffOrDie(myLiffId);
+    
+};
+
+/**
+* Check if myLiffId is null. If null do not initiate liff.
+* @param {string} myLiffId The LIFF ID of the selected element
+*/
+function initializeLiffOrDie(myLiffId) {
+    if (!myLiffId) {
+        document.getElementById("liffAppContent").classList.add('hidden');
+        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+    } else {
+        initializeLiff(myLiffId);
+    }
+}
+
+/**
+* Initialize LIFF
+* @param {string} myLiffId The LIFF ID of the selected element
+*/
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            // start to use LIFF's api
+            initializeApp();
+        })
+        .catch((err) => {
+ /*            document.getElementById("liffAppContent").classList.add('hidden');
+            document.getElementById("liffInitErrorMessage").classList.remove('hidden'); */
+        });
+}
+
+/**
+ * Initialize the app by calling functions handling individual app components
+ */
+ 
+
+
+function initializeApp() {
+//    displayLiffData();
+     liff.getProfile().then(function(profile) {
+	     // document.getElementById('userIdProfileField').textContent = profile.userId;
+         // document.getElementById('displayNameField').textContent = profile.displayName;
+         // document.getElementById('statusMessageField').textContent = profile.statusMessage; 
+ 	var x = document.getElementById("myFrame");
+	
+    var url = "https://script.google.com/macros/s/AKfycbxrIkxYE4yNVyNJU4eUnBTpoM1PFjkSO0aU-M-aKxvf_IR2XWs/exec"+"?lineid="+profile.userId;
+	x.setAttribute("src", url);
+    //document.body.appendChild(x);  
+ 	
+    
+    document.getElementById("showmess").style.display = "none";
+     document.body.appendChild(x); 
+
+
+        }).catch(function(error) {
+            window.alert('Error getting profile: ' + error);
+        });
+   
+
+    // check if the user is logged in/out, and disable inappropriate button
+
+}
+
+
+	   
+	   </script>
+
+	
+</body>
+</html>
