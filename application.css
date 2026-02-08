@@ -1,0 +1,253 @@
+/* ============================================
+   CUSTOM CSS FOR JOB APPLICATION FORM
+   ============================================ */
+
+/* Variables */
+:root {
+    --primary-color: #8CBA40;
+    --danger-color: #f14668;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #dbdbdb;
+    --bg-color: #f3f3f3;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --font-family: 'Prompt', 'Tahoma', sans-serif;
+}
+
+/* Global Styles */
+html, body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+input, select, option, textarea {
+    font-family: var(--font-family) !important;
+}
+
+input::placeholder {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Logo */
+.logo {
+    max-width: 100vmin;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Card Styling */
+.card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: var(--bg-light);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.card-header-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Form Fields */
+.input, .select select, .textarea {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus, .select select:focus, .textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.125em rgba(140, 186, 64, 0.25);
+    outline: none;
+}
+
+/* Labels */
+.label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.required-indicator::after {
+    content: ' *';
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+/* Radio & Checkbox */
+.radio, .checkbox {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Buttons */
+.button {
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+}
+
+.button.is-success {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button.is-success:hover {
+    background-color: #7aa330;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* File Upload */
+.file-cta {
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.file:hover .file-cta {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Image Preview */
+.image-preview {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    border: 2px solid var(--border-color);
+}
+
+/* Tables */
+.table {
+    background-color: var(--white);
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: var(--bg-light);
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Help Text */
+.help {
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
+.help.is-danger {
+    color: var(--danger-color);
+}
+
+.help.is-info {
+    color: #0891b2;
+}
+
+/* Signature Pad */
+.m-signature-pad {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
+    border-radius: 4px;
+}
+
+.m-signature-pad::before,
+.m-signature-pad::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    width: 40%;
+    height: 10px;
+    left: 20px;
+    bottom: 10px;
+    background: transparent;
+    transform: skew(-3deg) rotate(-3deg);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.m-signature-pad::after {
+    left: auto;
+    right: 20px;
+    transform: skew(3deg) rotate(3deg);
+}
+
+.m-signature-pad--body {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    border: 1px solid #f4f4f4;
+}
+
+.m-signature-pad--body canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+}
+
+/* Preview Form */
+#preview_form {
+    font-size: 14px;
+    font-family: 'Sarabun', 'Tahoma', sans-serif;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    #language_tr input,
+    #language_tr select {
+        font-size: 0.75rem !important;
+        padding: 0.2em 0.5em !important;
+    }
+
+    #language_tr td {
+        padding: 0.2em !important;
+    }
+
+    .table.is-bordered td,
+    .table.is-bordered th {
+        border-width: 1px !important;
+    }
+
+    .card-header-title {
+        font-size: 0.875rem !important;
+    }
+}
