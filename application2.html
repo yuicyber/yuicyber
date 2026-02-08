@@ -6,7 +6,7 @@
          ============================================ -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="แบบฟอร์มสมัครงานออนไลน์">
+    <meta name="description" content="แบบฟอร์มสมัครงานออนไลน์ VX">
     <meta name="author" content="Your Company">
     <meta name="theme-color" content="#8CBA40">
     
@@ -55,369 +55,7 @@
     <!-- ============================================
          CUSTOM STYLES
          ============================================ -->
-    <style>
-        /* ---- Variables ---- */
-        :root {
-            --primary-color: #8CBA40;
-            --text-color: #333;
-            --border-color: #e8e8e8;
-            --bg-color: #f3f3f3;
-            --font-family: 'Prompt', 'Tahoma', sans-serif;
-            --font-family-preview: 'Sarabun', 'Tahoma', sans-serif;
-        }
-
-        /* ---- Global Styles ---- */
-        html,
-        body {
-            background-color: var(--bg-color);
-            font-family: var(--font-family);
-            color: var(--text-color);
-        }
-
-        input,
-        select,
-        option,
-        textarea {
-            font-family: var(--font-family) !important;
-        }
-
-        input::placeholder {
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        textarea::placeholder {
-            font-family: var(--font-family);
-            font-weight: normal;
-        }
-
-        /* ---- Logo & Header ---- */
-        .logo {
-            max-width: 100vmin;
-            margin: 0 20px;
-            object-fit: contain;
-        }
-
-        .form-header {
-            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ---- Card Styling ---- */
-        .card {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            background-color: #f8f9fa;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .card-header-title {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* ---- Form Fields ---- */
-        .field-group {
-            margin-bottom: 20px;
-        }
-
-        .label {
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 8px;
-        }
-
-        .input,
-        .select select,
-        .textarea {
-            border-radius: 4px;
-            border: 1px solid #dbdbdb;
-            transition: border-color 0.3s ease;
-        }
-
-        .input:focus,
-        .select select:focus,
-        .textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.125em rgba(140, 186, 64, 0.25);
-        }
-
-        /* ---- Preview Styling ---- */
-        #preview_form {
-            font-size: 14px;
-            font-family: var(--font-family-preview);
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ---- Signature Pad Styling ---- */
-        .m-signature-pad {
-            position: relative;
-            font-size: 10px;
-            width: 300px;
-            height: 200px;
-            border: 1px solid var(--border-color);
-            background-color: #fff;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27),
-                        0 0 40px rgba(0, 0, 0, 0.08) inset;
-            border-radius: 4px;
-        }
-
-        .m-signature-pad::before,
-        .m-signature-pad::after {
-            position: absolute;
-            z-index: -1;
-            content: "";
-            width: 40%;
-            height: 10px;
-            left: 20px;
-            bottom: 10px;
-            background: transparent;
-            transform: skew(-3deg) rotate(-3deg);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .m-signature-pad::after {
-            left: auto;
-            right: 20px;
-            transform: skew(3deg) rotate(3deg);
-        }
-
-        .m-signature-pad--body {
-            position: absolute;
-            left: 10px;
-            right: 10px;
-            top: 10px;
-            bottom: 10px;
-            border: 1px solid #f4f4f4;
-        }
-
-        .m-signature-pad--body canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 4px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
-        }
-
-        /* ---- Table Styling ---- */
-        .table {
-            background-color: white;
-            border-collapse: collapse;
-        }
-
-        .table thead {
-            background-color: #f8f9fa;
-        }
-
-        .table thead th {
-            border-bottom: 2px solid var(--primary-color);
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .table tbody tr:hover {
-            background-color: #f9f9f9;
-        }
-
-        /* ---- Radio & Checkbox Styling ---- */
-        .is-checkradio[type="radio"],
-        .is-checkradio[type="checkbox"] {
-            margin-right: 8px;
-        }
-
-        .radio,
-        .checkbox {
-            display: inline-block;
-            margin-right: 20px;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        /* ---- Button Styling ---- */
-        .button {
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .button.is-success {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .button.is-success:hover {
-            background-color: #7aa330;
-            border-color: #7aa330;
-        }
-
-        /* ---- File Upload ---- */
-        .file-cta {
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .file:hover .file-cta {
-            background-color: var(--primary-color);
-        }
-
-        /* ---- Image Preview ---- */
-        .image-preview {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 4px;
-            border: 2px solid var(--border-color);
-        }
-
-        /* ---- Help Text ---- */
-        .help {
-            font-size: 0.875rem;
-            margin-top: 4px;
-        }
-
-        .help.is-danger {
-            color: #f14668;
-        }
-
-        .help.is-info {
-            color: #0891b2;
-        }
-
-        /* ---- Error Messages ---- */
-        .error-container {
-            background-color: #fef2f2;
-            border-left: 4px solid #f14668;
-            padding: 12px 16px;
-            margin-top: 8px;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .error-container.show {
-            display: block;
-        }
-
-        /* ---- Responsive Design ---- */
-        @media screen and (max-width: 768px) {
-            .columns {
-                margin-left: -0.75rem !important;
-                margin-right: -0.75rem !important;
-            }
-
-            .column {
-                padding: 0.75rem !important;
-            }
-
-            #language_tr input,
-            #language_tr select {
-                font-size: 0.75rem !important;
-                padding: 0.2em 0.5em !important;
-            }
-
-            #language_tr td {
-                padding: 0.2em !important;
-            }
-
-            .table.is-bordered td,
-            .table.is-bordered th {
-                border-width: 1px !important;
-                padding: 0.5em !important;
-            }
-
-            .card-header-title {
-                font-size: 0.875rem !important;
-            }
-
-            .field.has-addons {
-                flex-direction: column;
-            }
-
-            .field.has-addons .control {
-                margin-bottom: 0.75rem;
-            }
-
-            .m-signature-pad {
-                width: 100% !important;
-                height: 150px;
-            }
-
-            .form-header {
-                padding: 15px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .container.is-max-desktop {
-                padding: 1rem;
-            }
-
-            .section {
-                padding: 1rem 0;
-            }
-
-            .card {
-                margin-bottom: 1rem !important;
-            }
-
-            .table-container {
-                overflow-x: auto;
-            }
-        }
-
-        /* ---- Utility Classes ---- */
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--primary-color) 50%, 
-                transparent 100%);
-            margin: 30px 0;
-        }
-
-        .required-indicator::after {
-            content: ' *';
-            color: #f14668;
-            font-weight: bold;
-        }
-
-        .success-feedback {
-            color: #48bb78;
-            font-weight: 500;
-        }
-
-        .loading-spinner {
-            display: none;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="application.css">
 </head>
 
 <body>
@@ -583,7 +221,7 @@
                             <span class="icon is-small mr-2">
                                 <i class="fas fa-id-card"></i>
                             </span>
-                            ข้อมูลส่วนตัว
+                            ข้อม���ลส่วนตัว
                         </p>
                     </header>
                     <div class="card-content">
@@ -890,496 +528,6 @@
                     </div>
                 </div>
 
-                <!-- ====== SECTION 3: ADDRESS ====== -->
-                <div class="card mb-5">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            <span class="icon is-small mr-2">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </span>
-                            ที่อยู่ปัจจุบัน
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="columns">
-                                <div class="column is-two-thirds">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">บ้านเลขที่ หมู่ที่ หมู่บ้าน ตรอก/ซอย</label>
-                                        <div class="control">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="current_address" 
-                                                   id="current_address" 
-                                                   placeholder="เช่น 123 หมู่ 4" 
-                                                   maxlength="255"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">ถนน</label>
-                                        <div class="control">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="current_address_street" 
-                                                   id="current_address_street" 
-                                                   placeholder="เช่น ถ. สุขุมวิท" 
-                                                   maxlength="255"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="columns">
-                                <div class="column is-one-third">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">รหัสไปรษณีย์</label>
-                                        <div class="control">
-                                            <input type="tel" 
-                                                   class="input" 
-                                                   name="current_address_zipcode" 
-                                                   id="current_address_zipcode" 
-                                                   placeholder="เช่น 10110" 
-                                                   maxlength="5" 
-                                                   onkeypress="return inputNumbers(event);"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">แขวง/ตำบล</label>
-                                        <div class="control">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="current_address_subdistrict" 
-                                                   id="current_address_subdistrict" 
-                                                   placeholder="เช่น สีลม" 
-                                                   maxlength="200"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">เขต/อำเภอ</label>
-                                        <div class="control">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="current_address_district" 
-                                                   id="current_address_district" 
-                                                   placeholder="เช่น บางรัก" 
-                                                   maxlength="200"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">จังหวัด</label>
-                                        <div class="control">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="current_address_province" 
-                                                   id="current_address_province" 
-                                                   placeholder="เช่น กรุงเทพฯ" 
-                                                   maxlength="200"
-                                                   aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Address Status -->
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">สถานะที่อยู่</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="current_address_status" 
-                                                       value="self_house">
-                                                บ้านตนเอง
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="current_address_status" 
-                                                       value="rent_house">
-                                                บ้านเช่า
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="current_address_status" 
-                                                       value="other">
-                                                อื่น ๆ
-                                            </label>
-                                            <div id="current_address_status_error"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ====== SECTION 4: MARITAL STATUS ====== -->
-                <div class="card mb-5">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            <span class="icon is-small mr-2">
-                                <i class="fas fa-heart"></i>
-                            </span>
-                            สถานภาพ
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">สถานภาพทางการสมรส</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="marital_status" 
-                                                       value="single">
-                                                โสด
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="marital_status" 
-                                                       value="marry">
-                                                สมรส
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="marital_status" 
-                                                       value="divorce">
-                                                หย่า
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="marital_status" 
-                                                       value="unregister">
-                                                ไม่จดทะเบียน
-                                            </label>
-                                            <div id="marital_error"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label">จำนวนบุตร</label>
-                                        <div class="select">
-                                            <select name="child" id="child">
-                                                <option value="ไม่มี">ไม่มี</option>
-                                                <option value="1 คน">1 คน</option>
-                                                <option value="2 คน">2 คน</option>
-                                                <option value="3 คน">3 คน</option>
-                                                <option value="4 คน">4 คน</option>
-                                                <option value="5 คน">5 คน</option>
-                                                <option value="มากกว่า 5 คน">มากกว่า 5 คน</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Military Status (Male only) -->
-                            <div class="columns" id="military_display" style="display: none;">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">สถานภาพการคัดเลือกทหาร (เฉพาะผู้ชาย)</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="military_status" 
-                                                       value="passed">
-                                                ผ่านการคัดเลือกแล้ว
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="military_status" 
-                                                       value="notpassed">
-                                                ยังไม่ผ่านการคัดเลือก
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="military_status" 
-                                                       value="exempt">
-                                                ได้รับการยกเว้น
-                                            </label>
-                                            <div id="military_error"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ====== SECTION 5: VEHICLE ====== -->
-                <div class="card mb-5">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            <span class="icon is-small mr-2">
-                                <i class="fas fa-car"></i>
-                            </span>
-                            ยานพาหนะ
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <!-- Car -->
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">ความสามารถขับรถยนต์</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="car_drive" 
-                                                       value="can">
-                                                ขับได้
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="car_drive" 
-                                                       value="cannot">
-                                                ขับไม่ได้
-                                            </label>
-                                            <div id="car_drive_error"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">เป็นเจ้าของรถยนต์</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="car_owner" 
-                                                       value="not_have">
-                                                ไม่มี
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="car_owner" 
-                                                       value="have">
-                                                มี
-                                            </label>
-                                            <div id="car_owner_error"></div>
-                                        </div>
-                                        <div class="control mt-3" id="car_registration_number_display" style="display: none;">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="car_registration_number" 
-                                                   id="car_registration_number" 
-                                                   maxlength="100" 
-                                                   placeholder="ระบุเลขทะเบียน">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Motorcycle -->
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">ความสามารถขับรถจักรยานยนต์</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="motorcycle_drive" 
-                                                       value="can">
-                                                ขับได้
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="motorcycle_drive" 
-                                                       value="cannot">
-                                                ขับไม่ได้
-                                            </label>
-                                            <div id="motorcycle_drive_error"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="field-group">
-                                        <label class="label required-indicator">เป็นเจ้าของรถจักรยานยนต์</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="motorcycle_owner" 
-                                                       value="not_have">
-                                                ไม่มี
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" 
-                                                       class="is-checkradio is-success" 
-                                                       name="motorcycle_owner" 
-                                                       value="have">
-                                                มี
-                                            </label>
-                                            <div id="motorcycle_owner_error"></div>
-                                        </div>
-                                        <div class="control mt-3" id="motorcycle_registration_number_display" style="display: none;">
-                                            <input type="text" 
-                                                   class="input" 
-                                                   name="motorcycle_registration_number" 
-                                                   id="motorcycle_registration_number" 
-                                                   maxlength="100" 
-                                                   placeholder="ระบุเลขทะเบียน">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ====== SECTION 6: EDUCATION ====== -->
-                <div class="card mb-5">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            <span class="icon is-small mr-2">
-                                <i class="fas fa-graduation-cap"></i>
-                            </span>
-                            ประวัติการศึกษา
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div id="edu_display">
-                                <h5 class="title is-5">ลำดับที่ 1</h5>
-                                <div class="columns">
-                                    <div class="column is-one-fifth">
-                                        <div class="field-group">
-                                            <label class="label required-indicator">ระดับการศึกษา</label>
-                                            <div class="select is-fullwidth">
-                                                <select name="edu_level[]" id="edu_level" onchange="edu_level_bg($(this).val(), '1');" aria-required="true">
-                                                    <option value="">-- เลือก --</option>
-                                                    <option value="ม.6/ปวช. หรือเทียบเท่า">ม.6/ปวช.</option>
-                                                    <option value="ปวส.">ปวส.</option>
-                                                    <option value="ปริญญาตรี">ปริญญาตรี</option>
-                                                    <option value="ปริญญาโท">ปริญญาโท</option>
-                                                    <option value="ปริญญาเอก">ปริญญาเอก</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="field-group">
-                                            <label class="label required-indicator">สถาบันการศึกษา</label>
-                                            <div class="control">
-                                                <input type="text" 
-                                                       class="input" 
-                                                       name="edu_name[]" 
-                                                       id="edu_name" 
-                                                       placeholder="ชื่อมหาวิทยาลัย/โรงเรียน" 
-                                                       maxlength="255"
-                                                       aria-required="true">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-one-fifth">
-                                        <div class="field-group">
-                                            <label class="label required-indicator">ปีพ.ศ.ที่จบ</label>
-                                            <div class="control">
-                                                <input type="tel" 
-                                                       class="input" 
-                                                       name="edu_year[]" 
-                                                       id="edu_year" 
-                                                       placeholder="หรือ 0" 
-                                                       maxlength="4" 
-                                                       onkeypress="return inputNumbers(event);"
-                                                       aria-required="true">
-                                            </div>
-                                            <p class="help is-info">ใส่ 0 หากกำลังศึกษา</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="columns">
-                                    <div class="column" id="edu_bg_display_1" style="display: none;">
-                                        <div class="field-group">
-                                            <label class="label">คณะ</label>
-                                            <div class="control">
-                                                <input type="text" 
-                                                       class="input" 
-                                                       name="edu_bg[]" 
-                                                       id="edu_bg" 
-                                                       placeholder="เช่น วิศวกรรม" 
-                                                       maxlength="255">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="field-group">
-                                            <label class="label required-indicator">สาขา</label>
-                                            <div class="control">
-                                                <input type="text" 
-                                                       class="input" 
-                                                       name="edu_branch[]" 
-                                                       id="edu_branch" 
-                                                       placeholder="เช่น วิศวกรรมคอมพิวเตอร์" 
-                                                       maxlength="255"
-                                                       aria-required="true">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-one-fifth">
-                                        <div class="field-group">
-                                            <label class="label required-indicator">เกรดเฉลี่ย</label>
-                                            <div class="control">
-                                                <input type="text" 
-                                                       class="input" 
-                                                       name="edu_gpa[]" 
-                                                       id="edu_gpa" 
-                                                       placeholder="เช่น 3.50" 
-                                                       maxlength="4" 
-                                                       onkeypress="return inputNumbers(event);"
-                                                       aria-required="true">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button type="button" class="button is-success is-outlined is-rounded mt-4" id="edu_add">
-                                <span class="icon is-small">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <span>เพิ่มประวัติการศึกษา</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- ====== SUBMIT BUTTON ====== -->
                 <div class="columns mb-6">
                     <div class="column">
@@ -1408,44 +556,72 @@
     </section>
 
     <!-- ============================================
+         PREVIEW SECTION (Hidden by default)
+         ============================================ -->
+    <section class="section" id="preview_form" style="display: none;">
+        <div class="container is-max-desktop">
+            <div class="has-text-centered mb-6">
+                <h1 class="title">ตัวอย่างใบสมัคร</h1>
+                <button type="button" class="button is-success" id="download_btn" download="application.pdf">
+                    <span class="icon is-small">
+                        <i class="fas fa-download"></i>
+                    </span>
+                    <span>ดาวน์โหลด PDF</span>
+                </button>
+                <button type="button" class="button is-info ml-2" id="print_btn">
+                    <span class="icon is-small">
+                        <i class="fas fa-print"></i>
+                    </span>
+                    <span>พิมพ์</span>
+                </button>
+            </div>
+            <input type="hidden" id="pdfdat" value="">
+        </div>
+    </section>
+
+    <!-- ============================================
          JAVASCRIPT LIBRARIES
          ============================================ -->
     
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj3B+4C5lCY19aQdO47IMP04pWHVjO4DBd5d4xaY="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous" defer></script>
 
     <!-- jQuery Validate -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js" defer></script>
 
     <!-- Moment.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" defer></script>
 
     <!-- duDatepicker -->
-    <script src="https://cdn.jsdelivr.net/gh/dmuy/duDatepicker@2.0.0/dist/duDatepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dmuy/duDatepicker@2.0.0/dist/duDatepicker.min.js" defer></script>
 
     <!-- Sweet Alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
     <!-- Signature Pad -->
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.4/dist/signature_pad.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.4/dist/signature_pad.umd.min.js" defer></script>
 
     <!-- Thailand Address Autocomplete -->
-    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js" defer></script>
 
     <!-- PDFMake -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.0/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.0/vfs_fonts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.0/pdfmake.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.0/vfs_fonts.min.js" defer></script>
 
     <!-- Print JS -->
-    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js" defer></script>
 
     <!-- ============================================
-         CUSTOM APPLICATION SCRIPTS
+         CUSTOM APPLICATION SCRIPTS (ORDER MATTERS!)
          ============================================ -->
     
-    <!-- Main Application Script -->
-    <script src="application.js"></script>
+    <!-- Load PDF generation module first -->
+    <script src="application-pdf-generation.js" defer></script>
+    
+    <!-- Load main application script second -->
+    <script src="application.js" defer></script>
+
 </body>
 </html>
