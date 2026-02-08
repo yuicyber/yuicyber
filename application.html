@@ -1,0 +1,1911 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>แบบฟอร์มสมัครงานออนไลน์  V2.02</title>
+<!-- https://www.mazuma.co.th/register/ -->
+<!-- https://www.jqueryscript.net/time-clock/material-date-range-picker.html -->
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-checkradio@1.1.1/dist/css/bulma-checkradio.min.css">
+
+	<!-- Bulma Calendar CSS -->
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-calendar/dist/css/bulma-calendar.min.css"> -->
+
+    <!-- duDatepicker CSS -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dmuy/duDatepicker@2.0.0/dist/duDatepicker.css">
+
+    <!-- Icon CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,400;0,500;1,200;1,400;1,500&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,200;0,400;0,500;1,200;1,400;1,500&amp;display=swap">
+
+    <!-- Autocomplete Thailand Address Form -->
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+
+    <!-- PrintJS CSS -->
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+
+    <!-- Custom CSS -->
+<style>
+html, body{
+    background-color: #f3f3f3;
+    font-family: Prompt, Tahoma;
+}
+input, select, option{
+    font-family: Prompt, Tahoma;
+}
+.textarea::placeholder  {
+    font-family: Prompt, Tahoma;
+}
+  .textarea  {
+    font-family: Prompt, Tahoma;
+}
+.logo{
+    max-width: 100vmin;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+input::placeholder {
+    font-weight: bold;
+	font-size:12px;
+
+    
+}
+
+/* PREVIEW */
+#preview_form {
+    font-size: 14px;
+    font-family: Sarabun, Tahoma;
+}
+.main-line{
+    background-color: #000000;
+    width: 200px;
+}
+.m-signature-pad {
+  position: relative;
+  font-size: 10px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
+  border-radius: 4px;
+}
+
+.m-signature-pad:before, .m-signature-pad:after {
+	position: absolute;
+    z-index: -1;
+    content: "";
+	width: 40%;
+	height: 10px;
+	left: 20px;
+	bottom: 10px;
+	background: transparent;
+	-webkit-transform: skew(-3deg) rotate(-3deg);
+	-moz-transform: skew(-3deg) rotate(-3deg);
+	-ms-transform: skew(-3deg) rotate(-3deg);
+	-o-transform: skew(-3deg) rotate(-3deg);
+	transform: skew(-3deg) rotate(-3deg);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.m-signature-pad:after {
+	left: auto;
+	right: 20px;
+	-webkit-transform: skew(3deg) rotate(3deg);
+	-moz-transform: skew(3deg) rotate(3deg);
+	-ms-transform: skew(3deg) rotate(3deg);
+	-o-transform: skew(3deg) rotate(3deg);
+	transform: skew(3deg) rotate(3deg);
+}
+
+.m-signature-pad--body {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  border: 1px solid #f4f4f4;
+}
+
+.m-signature-pad--body
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+  }
+  
+  /* สำหรับอุปกรณ์ mobile */
+@media screen and (max-width: 768px) {
+    #language_tr input, 
+    #language_tr select {
+        font-size: 0.75rem !important;
+        padding: 0.2em 0.5em !important;
+    }
+    
+    #language_tr td {
+        padding: 0.2em !important;
+    }
+    
+    .table.is-bordered td, 
+    .table.is-bordered th {
+        border-width: 1px !important;
+    }
+    
+    .card-header-title {
+        font-size: 0.875rem !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <!-- FORM -->
+         <section class="section pt-5" id="main_form">
+        <div class="container is-max-desktop">
+            <form name="registration_frm" id="registration_frm"  novalidate="novalidate">
+
+                <!-- Logo -->
+                <div class="has-text-centered">
+                    <img id="hlogo" src="" style="width:180px;height:200px;" class="logo py-5">
+                    <input type="hidden" id="logo_base64" value="">
+                </div>
+
+                <div class="title has-text-dark has-text-centered mb-6">แบบฟอร์มสมัครงาน</div><input id="comp" hidden>
+
+                <div class="columns is-2">
+                    <div class="column is-one-fifth">
+
+                        <!-- Profile Image -->
+                        <div class="card mb-2">
+                            <header class="card-header">
+                                <p class="card-header-title">รูปถ่าย</p>
+                            </header>
+                            <div class="card-image">
+                                <div id="profile_image_preview" class="image is-fullwidth" style="width: 100%; height: 200px; background-image: url('https://www.w3schools.com/howto/img_avatar.png'); background-size: cover; background-position: center;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <div class="file is-boxed is-fullwidth">
+                                    <label class="file-label">
+                                        <input type="file" class="file-input" name="profile_image" id="profile_image" accept="image/*">
+                                        <input type="hidden" id="profile_image_base64">
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="is-centered">
+                                                เลือกไฟล์รูปภาพ
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <p class="help is-danger">*รูปถ่ายหน้าตรง ไม่สวมแว่น ขนาด 1 นิ้ว (ไฟล์ขนาดไม่เกิน 1MB)
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column">
+
+                        <!-- Registration detail -->
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">ข้อมูลสมัครงาน</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+
+                                    <div class="field mb-4">
+                                        <label class="label">สมัครในตำแหน่ง</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="apply_position" id="apply_position" placeholder="ระบุชื่อตำแหน่งที่ต้องการสมัคร" maxlength="255">
+                                        </div>
+                                    </div>
+                                    <div class="field mb-4">
+                                        <label class="label">รายได้ที่ต้องการ</label>
+                                        <div class="field">
+                                            <div class="control">
+                                                <input type="radio" class="is-checkradio is-success" name="desired_income" id="desired_income_daily" value="daily">
+                                                <label for="desired_income_daily" class="radio">รายวัน</label>
+                                                <input type="radio" class="is-checkradio is-success" name="desired_income" id="desired_income_monthly" value="monthly">
+                                                <label for="desired_income_monthly" class="radio">รายเดือน</label>
+                                                <div id="desired_income_error"></div>
+                                            </div>
+                                        </div>
+                                        <div class="field has-addons" id="desired_income_amount_display" style="display: none;">
+                                            <div class="control">
+                                                <input type="tel" class="input" name="desired_income_amount" id="desired_income_amount" placeholder="ระบุรายได้ที่ต้องการ" maxlength="6" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                            <p class="control">
+                                                <a class="button is-static">  บาท </a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">วันที่สามารถเริ่มทำงานได้</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="work_start" id="work_start" placeholder="ระบุวันที่สามารถเริ่มทำงานได้" data-mindate="today" autocomplete="off" onchange="changetobe(this)" readonly="">
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Profile -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ข้อมูลส่วนตัว</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+
+                            <div class="columns">
+                                <div class="column is-one-fifth">
+                                    <div class="field">
+                                        <label class="label">คำนำหน้า</label>
+                                        <div class="select is-fullwidth">
+                                            <select name="name_prefix" id="name_prefix">
+                                                <option value="">-- เลือก --</option>
+                                                <option value="นาย">นาย</option>
+                                                <option value="นาง">นาง</option>
+                                                <option value="นางสาว">นางสาว</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ชื่อ</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="firstname" id="firstname" placeholder="ระบุชื่อ" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">นามสกุล</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="lastname" id="lastname" placeholder="ระบุนามสกุล" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="columns">
+                                <div class="column is-one-fifth">
+                                    <div class="field">
+                                        <label class="label">คำนำหน้า(En)</label>
+                                        <div class="select is-fullwidth">
+                                            <select name="ename_prefix" id="ename_prefix">
+                                                <option value="">-- เลือก --</option>
+                                                <option value="Mr">Mr</option>
+                                                <option value="Mrs">Mrs</option>
+                                                <option value="Miss">Miss</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ชื่อ(En)</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="efirstname" id="efirstname" placeholder="Name" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">นามสกุล(En)</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="elastname" id="elastname" placeholder="Last Name" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ชื่อเล่น</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="nickname" id="nickname" placeholder="ระบุชื่อเล่น" maxlength="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">น้ำหนัก</label>
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <input type="tel" class="input" name="weight" id="weight" placeholder="ระบุน้ำหนัก" maxlength="6" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                            <p class="control">
+                                                <a class="button is-static">
+                                                    กิโลกรัม
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ส่วนสูง</label>
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <input type="tel" class="input" name="height" id="height" placeholder="ระบุส่วนสูง" maxlength="3" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                            <p class="control">
+                                                <a class="button is-static">
+                                                    เซ็นติเมตร
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+     						<div class="columns">
+								<div class="column is-one-third">
+                                    <div class="field">
+                                        <label class="label">บัตรประชาชนเลขที่</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="nationalid" id="nationalid" placeholder="ระบุเลขบัตรประชาชน" maxlength="13" onkeypress="return inputNumbers(event);" >
+                                        </div>
+                                    </div>
+                            </div>
+                            </div>
+
+                             
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <div class="field">
+                                        <label class="label">วัน/เดือน/ปี เกิด</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="birthday" id="birthday" placeholder="ระบุวัน/เดือน/ปี เกิด"  onchange="changetobe(this)" autocomplete="off" readonly="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">อายุ</label>
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <input type="text" class="input" name="age_years" id="age_years" maxlength="2" onkeypress="return inputNumbers(event);" pattern="\d+" readonly="">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static">
+                                                    ปี
+                                                </a>
+                                            </div>
+                                            <div class="control">
+                                                <input type="text" class="input" name="age_months" id="age_months" maxlength="2" onkeypress="return inputNumbers(event);" pattern="\d+" readonly="">
+                                            </div>
+                                            <div class="control">
+                                                <a class="button is-static">
+                                                    เดือน
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">สัญชาติ</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="nationality" id="nationality" placeholder="ระบุสัญชาติ" maxlength="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">เชื้อชาติ</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="race" id="race" placeholder="ระบุเชื้อชาติ" maxlength="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ศาสนา</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="religion" id="religion" placeholder="ระบุศาสนา" maxlength="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">โทรศัพท์</label>
+                                        <div class="control">
+                                            <input type="tel" class="input" name="telephone_number" id="telephone_number" placeholder="ระบุหมายเลขโทรศัพท์" maxlength="10" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">อีเมล</label>
+                                        <div class="control">
+                                            <input type="email" class="input" name="email" id="email" placeholder="ระบุอีเมล" maxlength="200">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="navbar-divider mb-4">
+
+                            <div class="columns">
+                                <div class="column is-two-thirds">
+                                    <div class="field">
+                                        <label class="label">ที่อยู่ปัจจุบัน <small>(บ้านเลขที่, หมู่ที่, หมู่บ้าน,
+                                                ตรอก/ซอย)</small></label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="current_address" id="current_address" placeholder="ระบุบ้านเลขที่, หมู่ที่, หมู่บ้าน, ตรอก/ซอย" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ถนน</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="current_address_street" id="current_address_street" placeholder="ระบุถนน" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-one-third">
+                                    <div class="field">
+                                        <label class="label">รหัสไปรษณีย์</label>
+                                        <div class="control">
+                                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                                              <input type="tel" class="input tt-hint" maxlength="5" onkeypress="return inputNumbers(event);" pattern="\d+" readonly="" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                              <input type="tel" class="input tt-input" name="current_address_zipcode" id="current_address_zipcode" placeholder="ระบุรหัสไปรษณีย์" maxlength="5" onkeypress="return inputNumbers(event);" pattern="\d+" spellcheck="false" dir="auto" aria-activedescendant="" aria-owns="current_address_zipcode_listbox" role="combobox" aria-readonly="true" aria-autocomplete="list" style="position: relative; vertical-align: top; background-color: transparent;">
+                                              <span role="status" aria-live="polite" style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap;">
+                                              </span>
+                                              <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Prompt, Tahoma; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">
+                                              </pre>
+                                              <div role="listbox" class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                                                <div role="presentation" class="tt-dataset tt-dataset-3"></div></div>
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">แขวง/ตำบล</label>
+                                        <div class="control">
+                                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+											<input type="text" class="input tt-hint" maxlength="200" readonly="" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+											<input type="text" class="input tt-input" name="current_address_subdistrict" id="current_address_subdistrict" placeholder="ระบุแขวง/ตำบล" maxlength="200" spellcheck="false" dir="auto" aria-activedescendant="" aria-owns="current_address_subdistrict_listbox" role="combobox" aria-readonly="true" aria-autocomplete="list" style="position: relative; vertical-align: top; background-color: transparent;">
+											<span role="status" aria-live="polite" style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap;"></span>
+											<pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Prompt, Tahoma; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">
+											</pre>
+											<div role="listbox" class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+											  <div role="presentation" class="tt-dataset tt-dataset-0"></div>
+											</div>
+											</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">เขต/อำเภอ</label>
+                                        <div class="control">
+                                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+											<input type="text" class="input tt-hint" maxlength="200" readonly="" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+											<input type="text" class="input tt-input" name="current_address_district" id="current_address_district" placeholder="ระบุเขต/อำเภอ" maxlength="200" spellcheck="false" dir="auto" aria-activedescendant="" aria-owns="current_address_district_listbox" role="combobox" aria-readonly="true" aria-autocomplete="list" style="position: relative; vertical-align: top; background-color: transparent;">
+											<span role="status" aria-live="polite" style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap;"></span>
+											<pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Prompt, Tahoma; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">
+											</pre>
+											<div role="listbox" class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+												<div role="presentation" class="tt-dataset tt-dataset-1"></div>
+											</div>
+											</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">จังหวัด</label>
+                                        <div class="control">
+                                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+											<input type="text" class="input tt-hint" maxlength="200" readonly="" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+											<input type="text" class="input tt-input" name="current_address_province" id="current_address_province" placeholder="ระบุจังหวัด" maxlength="200" spellcheck="false" dir="auto" aria-activedescendant="" aria-owns="current_address_province_listbox" role="combobox" aria-readonly="true" aria-autocomplete="list" style="position: relative; vertical-align: top; background-color: transparent;">
+											<span role="status" aria-live="polite" style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap;"></span>
+											<pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Prompt, Tahoma; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">
+											</pre>
+											<div role="listbox" class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+												<div role="presentation" class="tt-dataset tt-dataset-2"></div>
+											</div>
+											</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+						
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">สถานะเป็น</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="current_address_status" id="current_address_status_selfhouse" value="self_house">
+                                            <label for="current_address_status_selfhouse" class="radio">บ้านตนเอง</label>
+                                            <input type="radio" class="is-checkradio is-success" name="current_address_status" id="current_address_status_renthouse" value="rent_house">
+                                            <label for="current_address_status_renthouse" class="radio">บ้านเช่า</label>
+                                            <input type="radio" class="is-checkradio is-success" name="current_address_status" id="current_address_status_other" value="other">
+                                            <label for="current_address_status_other" class="radio">อื่น ๆ</label>
+                                            <div id="current_address_status_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="navbar-divider mb-4">
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">สถานภาพทางการสมรส</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="marital_status" id="marital_status_single" value="single">
+                                            <label for="marital_status_single" class="radio">โสด</label>
+                                            <input type="radio" class="is-checkradio is-success" name="marital_status" id="marital_status_marry" value="marry">
+                                            <label for="marital_status_marry" class="radio">สมรส</label>
+                                            <input type="radio" class="is-checkradio is-success" name="marital_status" id="marital_status_divorce" value="divorce">
+                                            <label for="marital_status_divorce" class="radio">หย่า</label>
+                                            <input type="radio" class="is-checkradio is-success" name="marital_status" id="marital_status_unregister" value="unregister">
+                                            <label for="marital_status_unregister" class="radio">ไม่จดทะเบียน</label>
+                                            <div id="marital_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">บุตร</label>
+                                        <div class="select">
+                                            <select name="child" id="child">
+                                                <option value="ไม่มี">ไม่มี</option>
+                                                <option value="1 คน">1 คน</option>
+                                                <option value="2 คน">2 คน</option>
+                                                <option value="3 คน">3 คน</option>
+                                                <option value="4 คน">4 คน</option>
+                                                <option value="5 คน">5 คน</option>
+                                                <option value="มากกว่า 5 คน">มากกว่า 5 คน</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns" id="military_display" style="display: none;">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">สถานภาพทางการคัดเลือกทหาร (เฉพาะผู้ชาย)</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="military_status" id="military_status_passed" value="passed">
+                                            <label for="military_status_passed" class="radio">ผ่านการคัดเลือกทหารแล้ว</label>
+                                            <input type="radio" class="is-checkradio is-success" name="military_status" id="military_status_notpassed" value="notpassed">
+                                            <label for="military_status_notpassed" class="radio">ยังไม่ผ่านการคัดเลือกทหาร</label>
+                                            <input type="radio" class="is-checkradio is-success" name="military_status" id="military_status_exempt" value="exempt">
+                                            <label for="military_status_exempt" class="radio">ได้รับการยกเว้น</label>
+                                            <div id="military_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                                       
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ขับรถยนต์</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="car_drive" id="car_drive_can" value="can">
+                                            <label for="car_drive_can" class="radio">ขับได้</label>
+                                            <input type="radio" class="is-checkradio is-success" name="car_drive" id="car_drive_cannot" value="cannot">
+                                            <label for="car_drive_cannot" class="radio">ขับไม่ได้</label>
+                                            <div id="car_drive_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">มีรถยนต์เป็นของตนเอง</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="car_owner" id="car_owner_not_have" value="not_have">
+                                            <label for="car_owner_not_have" class="radio">ไม่มี</label>
+                                            <input type="radio" class="is-checkradio is-success" name="car_owner" id="car_owner_have" value="have">
+                                            <label for="car_owner_have" class="radio">มี</label>
+                                            <div id="car_owner_error"></div>
+                                        </div>
+                                        <div class="control mt-3" id="car_registration_number_display" style="display: none;">
+                                            <input type="text" class="input" name="car_registration_number" id="car_registration_number" maxlength="100" placeholder="ระบุเลขทะเบียนรถ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ขับรถจักรยานยนต์</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="motorcycle_drive" id="motorcycle_drive_can" value="can">
+                                            <label for="motorcycle_drive_can" class="radio">ขับได้</label>
+                                            <input type="radio" class="is-checkradio is-success" name="motorcycle_drive" id="motorcycle_drive_cannot" value="cannot">
+                                            <label for="motorcycle_drive_cannot" class="radio">ขับไม่ได้</label>
+                                            <div id="motorcycle_drive_error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">มีรถจักรยายนต์เป็นของตนเอง</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="motorcycle_owner" id="motorcycle_owner_not_have" value="not_have">
+                                            <label for="motorcycle_owner_not_have" class="radio">ไม่มี</label>
+                                            <input type="radio" class="is-checkradio is-success" name="motorcycle_owner" id="motorcycle_owner_have" value="have">
+                                            <label for="motorcycle_owner_have" class="radio">มี</label>
+                                            <div id="motorcycle_owner_error"></div>
+                                        </div>
+                                        <div class="control mt-3" id="motorcycle_registration_number_display" style="display: none;">
+                                            <input type="text" class="input" name="motorcycle_registration_number" id="motorcycle_registration_number" maxlength="100" placeholder="ระบุเลขทะเบียนรถ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ประวัติการศึกษา</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+
+                            <div id="edu_display">
+                                <h5 class="title is-5">ลำดับที่ 1</h5>
+                                <div class="columns">
+                                    <div class="column is-one-fifth">
+                                        <div class="field">
+                                            <label class="label">ระดับการศึกษา</label>
+                                            <div class="select is-fullwidth">
+                                                <select name="edu_level[]" id="edu_level" onchange="edu_level_bg($(this).val(), '1');">
+                                                    <option value="">-- เลือก --</option>
+                                                    <option value="ม.6/ปวช. หรือเทียบเท่า">ม.6/ปวช. หรือเทียบเท่า
+                                                    </option>
+                                                    <option value="ปวส.">ปวส.</option>
+                                                    <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                                    <option value="ปริญญาโท">ปริญญาโท</option>
+                                                    <option value="ปริญญาเอก">ปริญญาเอก</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">ชื่อสถาบันการศึกษา</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="edu_name[]" id="edu_name" placeholder="ระบุชื่อสถาบันการศึกษา" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-one-fifth">
+                                        <div class="field">
+                                            <label class="label">ปี พ.ศ.ที่จบ</label>
+                                            <div class="control">
+                                                <input type="tel" class="input" name="edu_year[]" id="edu_year" placeholder="หากกำลังศึกษาอยู่ให้ใส่ 0" maxlength="4" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column" id="edu_bg_display_1" style="display: none;">
+                                        <div class="field">
+                                            <label class="label">คณะ</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="edu_bg[]" id="edu_bg" placeholder="เช่น นิเทศศาสตรบัณฑิต" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">สาขา</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="edu_branch[]" id="edu_branch" placeholder="ระบุสาขาที่เรียน" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-one-fifth">
+                                        <div class="field">
+                                            <label class="label">เกรดเฉลี่ย</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="edu_gpa[]" id="edu_gpa" placeholder="ระบุเกรดเฉลี่ย" maxlength="4" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="button is-success is-outlined is-rounded mt-4" id="edu_add">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span>เพิ่มประวัติการศึกษา</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ประวัติการทำงาน</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div id="work_display">
+                                <h5 class="title is-5">ลำดับที่ 1</h5>
+
+                                <div class="columns">
+                                    <div class="column is-three-fifths pb-0">
+                                        <label class="label">ระยะเวลา ตั้งแต่</label>
+                                        <div class="field has-addons">
+                                            <div class="control">
+                                                <input type="text" class="input" name="work_date_from[]" id="work_date_from" placeholder="ระบุช่วงเวลาที่ทำงาน" data-maxdate="today" autocomplete="off" onchange="changetobe(this);work_date_from_change(this);" readonly="">
+                                            </div>
+                                            <p class="control">
+                                                <a class="button is-static">
+                                                    ถึง
+                                                </a>
+                                            </p>
+                                            <div class="control">
+                                                <input type="text" class="input" name="work_date_to[]" id="work_date_to" placeholder="ระบุช่วงเวลาที่ทำงาน" data-maxdate="today" autocomplete="off" onchange="changetobe(this);work_date_to_change(this);" readonly="">
+                                            </div>
+                                            <button type="button" class="button is-dark is-outlined" id="btn_today" onclick="worktoday()">
+                                                <span>ปัจจุบัน</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">รวมระยะเวลาที่ทำงาน</label>
+                                            <div class="field has-addons">
+                                                <div class="control">
+                                                    <input type="text" class="input" name="work_years[]" id="work_years" maxlength="2" onkeypress="return inputNumbers(event);" pattern="\d+" readonly="">
+                                                </div>
+                                                <div class="control">
+                                                    <a class="button is-static">
+                                                        ปี
+                                                    </a>
+                                                </div>
+                                                <div class="control">
+                                                    <input type="text" class="input" name="work_months[]" id="work_months" maxlength="2" onkeypress="return inputNumbers(event);" pattern="\d+" readonly="">
+                                                </div>
+                                                <div class="control">
+                                                    <a class="button is-static">
+                                                        เดือน
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">สถานที่ทำงาน</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="work_station[]" id="work_station" placeholder="ระบุชื่อสถานที่ทำงาน" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">ตำแหน่ง</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="work_position[]" id="work_position" placeholder="ระบุตำแหน่ง" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">เงินเดือน</label>
+                                            <div class="control">
+                                                <input type="tel" class="input" name="work_salary[]" id="work_salary" placeholder="ระบุเงินเดือน" maxlength="9" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">เบอร์โทรศัพท์</label>
+                                            <div class="control">
+                                                <input type="tel" class="input" name="work_telephone[]" id="work_telephone" placeholder="ระบุเบอร์โทรศัพท์" maxlength="10" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">หน้าที่ความรับผิดชอบ</label>
+                                            <div class="control">
+                                                <textarea class="textarea" name="work_responsibility[]" id="work_responsibility" placeholder="ระบุหน้าที่ความรับผิดชอบ" maxlength="1000" rows="1"></textarea>
+                                            </div>
+                                            <p class="help">สามารถพิมพ์ได้ <span id="work_responsibility_chars">1,000</span> ตัวอักษร</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">เหตุผลในการลาออก</label>
+                                            <div class="control">
+                                                <textarea class="textarea" name="work_reason[]" id="work_reason" placeholder="ระบุเหตุผลในการลาออก" maxlength="500" rows="1"></textarea>
+                                            </div>
+                                            <p class="help">สามารถพิมพ์ได้ <span id="work_reason_chars">500</span>
+                                                ตัวอักษร</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="button is-success is-outlined is-rounded mt-4" id="work_add">
+                                <span class="icon is-small">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                <span>เพิ่มประวัติการทำงาน</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ภาษาต่างประเทศ</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="field">
+                            <div class="content">
+                                <div class="table-container">
+                                    <table class="table is-bordered mb-1">
+                                        <thead>
+                                            <tr class="has-text-centered">
+                                                <th class="has-text-left">ภาษา</th>
+                                                <th>การฟัง</th>
+                                                <th>การพูด</th>
+                                                <th>การอ่าน</th>
+                                                <th>การเขียน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="language_tr">
+                                            <tr>
+                                                <td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="language[]" id="language" maxlength="100" value="ไทย" readonly="" aria-invalid="false">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_listen[]" id="lang_listen">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_speak[]" id="lang_speak">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_read[]" id="lang_read">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_write[]" id="lang_write">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="language[]" id="language" maxlength="100" value="อังกฤษ" readonly="" aria-invalid="false">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_listen[]" id="lang_listen">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_speak[]" id="lang_speak">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_read[]" id="lang_read">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_write[]" id="lang_write">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="language[]" id="language" maxlength="100" value="จีน" readonly="" aria-invalid="false">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_listen[]" id="lang_listen">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_speak[]" id="lang_speak">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_read[]" id="lang_read">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="select is-fullwidth">
+                                                        <select name="lang_write[]" id="lang_write">
+                                                            <option value="">-- เลือก --</option>
+                                                            <option value="fair">พอใช้</option>
+                                                            <option value="good">ดี</option>
+                                                            <option value="verygood">ดีมาก</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="help has-text-danger">*หากไม่สามารถทำได้ให้เว้นว่างไว้</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="button is-success is-outlined is-rounded" id="language_add">
+                            <span class="icon is-small">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span>เพิ่มภาษาอื่น ๆ</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Training/Inspection/Apprenticeship -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ประวัติการฝึกอบรม/ดูงาน/ฝีกงาน</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="field">
+                            <div class="content">
+                                <div class="table-container">
+                                    <table class="table is-bordered mb-1">
+                                        <thead>
+                                            <tr class="has-text-centered">
+                                                <th>ชื่อหลักสูตร</th>
+                                                <th>สถาบัน</th>
+                                                <th>วุฒิได้รับ</th>
+                                                <th>ระยะเวลา</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="training_tr">
+                                            <tr>
+                                                <td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="training_name[]" id="training_name" maxlength="100"  aria-invalid="false"  placeholder="ระบุชื่อหลักสูตร">
+                                                    </div>
+                                                </td>
+												<td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="training_insitname[]" id="training_insitname" maxlength="100" aria-invalid="false" placeholder="ระบุสถาบัน">
+                                                    </div>
+                                                </td>												
+												<td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="training_degree[]" id="training_degree" maxlength="100"   aria-invalid="false" placeholder="ระบุวุฒิที่ได้รับ">
+                                                    </div>
+                                                </td>		
+												<td>
+                                                    <div class="field">
+                                                        <input type="text" class="input valid" name="training_period[]" id="training_period" maxlength="100"  aria-invalid="false"  placeholder="ระบุระยะเวลา">
+                                                    </div>
+                                                </td>														
+                                             </tr>
+  
+                                        </tbody>
+                                    </table>
+                                    <p class="help has-text-danger">*หากไม่มีให้เว้นว่างไว้</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="button is-success is-outlined is-rounded" id="training_add">
+                            <span class="icon is-small">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span>เพิ่มประวัติฝึกอบรม</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reference person -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">บุคคลอ้างอิง</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+
+                            <div class="columns">
+                                <div class="column is-one-fifth">
+                                    <div class="field">
+                                        <label class="label">คำนำหน้า</label>
+                                        <div class="select is-fullwidth">
+                                            <select name="refperson_prefix" id="refperson_prefix">
+                                                <option value="">-- เลือก --</option>
+                                                <option value="นาย">นาย</option>
+                                                <option value="นาง">นาง</option>
+                                                <option value="นางสาว">นางสาว</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ชื่อ - นามสกุล</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="refperson_name" id="refperson_name" placeholder="ระบุ ชื่อ - นามสกุล" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ตำแหน่ง</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="refperson_position" id="refperson_position" placeholder="ระบุตำแหน่ง" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">สถานที่ทำงาน</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="refperson_workstation" id="refperson_workstation" placeholder="ระบุชื่อสถานที่ทำงาน" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">เบอร์โทรศัพท์</label>
+                                        <div class="control">
+                                            <input type="tel" class="input" name="refperson_telephone" id="refperson_telephone" placeholder="ระบุเบอร์โทรศัพท์" maxlength="10" onkeypress="return inputNumbers(event);" pattern="\d+">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More -->
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title">ข้อมูลเพิ่มเติม</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+
+                           <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ท่านมีความบกพร่องของร่างกาย หรือเป็นโรคติดต่อเรื้อรังที่เป็นอุปสรรคต่อการทำงานหรือไม่</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="congenital_disease_status" id="congenital_disease_status_not_have" value="not_have">
+                                            <label for="congenital_disease_status_not_have" class="radio">ไม่มี</label>
+                                            <input type="radio" class="is-checkradio is-success" name="congenital_disease_status" id="congenital_disease_status_have" value="have">
+                                            <label for="congenital_disease_status_have" class="radio">มี</label>
+                                            <div id="congenital_disease_error"></div>
+                                        </div>
+                                        <div class="control mt-3" id="congenital_disease_display" style="display: none;">
+                                            <input type="text" class="input" name="congenital_disease" id="congenital_disease" placeholder="ระบุ" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ท่านเคยเจ็บป่วยหรือได้รับอุบัติเหตุจนต้องเข้ารับการรักษาในโรงพยาบาลหรือไม่</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="hospital_status" id="hospital_status_not_have" value="not_have">
+                                            <label for="hospital_status_not_have" class="radio">ไม่เคย</label>
+                                            <input type="radio" class="is-checkradio is-success" name="hospital_status" id="hospital_status_have" value="have">
+                                            <label for="hospital_status_have" class="radio">เคย</label>
+                                            <div id="hospital_status_error"></div>
+                                        </div>
+                                        <div class="control mt-3" id="hospital_detail_display" style="display: none;">
+                                            <input type="text" class="input" name="hospital_detail" id="hospital_detail" placeholder="ระบุสาเหตุการเข้ารพ." maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+							<div class="columns">
+                                 <div class="column">
+                                    <div class="field">
+                                        <label class="label">สุขภาพโดยทั่วไปของท่าน </label>
+                                        <div class="select is-fullwidth">
+                                            <select name="generalhealth" id="generalhealth">
+                                                <option value="">-- เลือก --</option>
+                                                <option value="ดีเลิศ">ดีเลิศ</option>
+                                                <option value="ดี">ดี</option>
+                                                <option value="พอใช้">พอใช้</option>
+												<option value="ไม่ดี">ไม่ดี</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>							
+
+
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ท่านเคยถูกศาลพิพากษาให้เป็นบุคคลล้มละลาย หรือเคยทำผิดทางอาญาหรือไม่</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="crime_status" id="crime_status_never" value="never">
+                                            <label for="crime_status_never" class="radio">ไม่เคยต้องโทษ</label>
+                                            <input type="radio" class="is-checkradio is-success" name="crime_status" id="crime_status_ever" value="ever">
+                                            <label for="crime_status_ever" class="radio">เคยต้องโทษ</label>
+                                            <div id="crime_error"></div>
+                                        </div>
+                                        <div class="control mt-3" id="crime_case_display" style="display: none;">
+                                            <input type="text" class="input" name="crime_case" id="crime_case" placeholder="ระบุคดีที่เคยต้องโทษ" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ท่านยินยอมให้บริษัทตรวจประวัติอาชญากรรมหรือไม่</label>
+                                        <div class="control">
+                                            <input type="radio" class="is-checkradio is-success" name="crimecheck_status" id="crimecheck_status_yes" value="yes">
+                                            <label for="crimecheck_status_yes" class="radio">ยินยอม</label>
+                                            <input type="radio" class="is-checkradio is-success" name="crimecheck_status" id="crimecheck_status_no" value="no">
+                                            <label for="crimecheck_status_no" class="radio">ไม่ยินยอม</label>
+                                            <div id="crimecheck_error"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+							
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">กรุณาบอกจุดอ่อนของตนเอง</label>
+                                        <div class="control">
+                                            <textarea class="textarea" name="more_weakness[]" id="more_weakness" placeholder="ระบุจุดอ่อนของตนเอง" maxlength="1000" rows="1"></textarea>
+                                        </div>
+                                        <p class="help">สามารถพิมพ์ได้ <span id="more_weakness_chars">1,000</span>
+                                            ตัวอักษร</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">กรุณาบอกจุดแข็งของตนเอง</label>
+                                        <div class="control">
+                                            <textarea class="textarea" name="more_strength[]" id="more_strength" placeholder="ระบุจุดแข็งของตนเอง" maxlength="1000" rows="1"></textarea>
+                                        </div>
+                                        <p class="help">สามารถพิมพ์ได้ <span id="more_strength_chars">1,000</span>
+                                            ตัวอักษร</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ทำไมถึงเลือกสมัครงานที่นี่</label>
+                                        <div class="control">
+                                            <textarea class="textarea" name="more_reason[]" id="more_reason" placeholder="ทำไมถึงเลือกสมัครงานที่บริษัทนี้" maxlength="1000" rows="1"></textarea>
+                                        </div>
+                                        <p class="help">สามารถพิมพ์ได้ <span id="more_reason_chars">1,000</span>
+                                            ตัวอักษร</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ท่านรู้จักใครที่บริษัทนี้</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="more_who" id="more_who" placeholder="ระบุชื่อบุคคลที่คุณรู้จัก"  maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">ตำแหน่ง</label>
+                                        <div class="control">
+                                            <input type="text" class="input" name="more_who_position" id="more_who_position" placeholder="ระบุตำแหน่ง" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="columns" style="display:none">
+                                <div class="column">
+                                    <div class="field">
+                                        <label class="label">แนบเอกสารการสมัคร</label>
+                                        <div class="control">
+                                            <input type="file" name="more_documents[]" id="more_documents" accept="application/pdf">
+                                        </div>
+                                        <p class="help is-danger">*ขนาดไฟล์ไม่เกิน 10MB</p>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="columns">
+									<div class="column">
+											<div class="field">
+												<label class="label">บุคคลที่สามารถติดต่อได้ในกรณีเร่งด่วน </label>
+												<div class="control">
+													<input type="text" class="input" name="namecontact" id="namecontact" placeholder="ระบุชื่อผู้ติดต่อ" maxlength="100">
+												</div>
+											</div>
+										</div>
+										<div class="column">
+											<div class="field">
+												<label class="label">ความสัมพันธ์</label>
+												<div class="control">
+													<input type="text" class="input" name="relationcontact" id="relationcontact" placeholder="ระบุความสัมพันธ์"   maxlength="100">
+												</div>
+											</div>
+										</div>
+										<div class="column">
+											<div class="field">
+												<label class="label">โทรศัพท์</label>
+												<div class="control">
+													<input type="tel" class="input" name="telcontact" id="telcontact" maxlength="10" placeholder="ระบุเบอร์โทรศัพท์" onkeypress="return inputNumbers(event);" pattern="\d+">
+												</div>
+											</div>
+										</div>
+									</div>
+                             <div class="columns">
+                                    <div class="column">
+                                        <div class="field">
+                                            <label class="label">ที่อยู่</label>
+                                            <div class="control">
+                                                <input type="text" class="input" name="addresscontact" id="addresscontact" placeholder="ระบุที่อยู่" maxlength="255">
+                                            </div>
+                                        </div>
+                                    </div>
+                             </div>
+								
+                          <div class="field">
+                            <label class="label">รูปหน้าบัตรประชาชนของผุ้สมัคร</label>
+              
+                                <div id="idcard_image_preview" style=" height: 200px; background-image: url('https://pggitdev.github.io/ppg-files/asset/idcard.jpg'); background-size: contain;background-repeat:no-repeat; background-position: center;">
+                                </div>
+              
+                            <div class="control">
+                                <div class="file is-boxed is-fullwidth">
+                                    <label class="file-label">
+                                        <input type="file" class="file-input" name="idcard_image" id="idcard_image" accept="image/*">
+                                        <input type="hidden" id="idcard_image_base64">
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="is-centered">
+                                                กดเลือกรูป
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                          
+                           <div class="columns">
+                                <div class="column">
+                                    <div class="field">
+                                        <div class="control" style="font-size:12px">
+                                           <label class="checkbox">
+                                            <input type="checkbox" id="consent">
+                                              &nbsp;ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูลส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า สำหรับให้บริษัทพิจารณาคุณสมบัติ ว่ามีความเหมาะสมกับกับตำแหน่งงานที่ทางบริษัทฯ เปิดรับ พร้อมทั้งนำข้อมูลส่วนบุคคลไปใช้ในด้านการพัฒนาการบริหารงานบุคคลากรในแง่อันเป็นประโยชน์ได้
+                                          </label>  
+										                                             <label class="checkbox">
+                                            <input type="checkbox" id="consent2">
+                                              &nbsp;ข้าพเจ้าขอรับรองว่า ข้อความที่ข้าพเจ้าระบุไว้ในสมัครงานนี้ ถูกต้องและเป็นจริงทุกประการ ข้าพเจ้ายินยอมให้บริษัทฯ สอบประวัติเกี่ยวกับตัวข้าพเจ้าได้ และหากข้าพเจ้าได้รับการพิจารณาเข้าทำงาน และบริษัทตรวจสอบว่าข้อความที่ให้ไว้ไม่ตรงกับความจริง ข้าพเจ้ายินดีให้บริษัทฯ ยกเลิกสัญญาจ้างของข้าพเจ้าทันที โดยข้าพเจ้าจะไม่เรียกร้องค่าสินไหมทดแทนหรือเงินชดเชยใดๆ ทั้งสิ้นจากบริษัทฯ
+                                          </label>  
+
+										  <input type="hidden" id="consent_base64" value="">
+                                        </div>
+                                    </div>
+                                  </div>     
+                                <div class="column">
+                                   <div class="field">                                  
+                                    <label class="label">ลงชื่อผู้สมัคร<span>
+                                      <input type="button" id='btnRest' value="Clear"></span></label>
+                                      <div class="control">
+                                        
+                                          <div id="signature-pad-1" class="m-signature-pad">
+                                            <div class="m-signature-pad--body">
+                                              <canvas id="pad" class="pad"> </canvas>
+                                            </div>
+                                          </div>
+  
+                                      </div>
+                                    </div>
+                                </div>
+						    </div>
+                        </div>
+                    </div>
+                  
+                  
+                </div>
+
+                <!-- Button -->
+                <div class="field is-grouped is-grouped-centered mt-4">
+                    <div class="control">
+                        <button type="submit" class="button is-success" id="bt_submit" >
+                            <span class="icon">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span>ยืนยัน</span>
+                        </button>
+                    </div>
+                    <div class="control">
+                        <button type="reset" class="button">
+                            <span class="icon">
+                                <i class="fas fa-times"></i>
+                            </span>
+                            <span>ยกเลิก</span>
+                        </button>
+                    </div>
+                </div>
+              
+
+            </form>
+        </div>
+    </section>
+    <!-- END FORM -->
+
+<!--style="display: none;"-->
+    <!-- PREVIEW -->
+    <section class="section pt-5" id="preview_form"  style="display: none;">
+        <div class="container is-max-desktop">
+            <!-- Logo -->
+            <div class="has-text-centered">
+                <img src="https://lh5.googleusercontent.com/d/10iXtRW6Ie67P1zKS91-BtSo-LBYDZ7Bb" class="logo py-5">
+            </div>
+
+            <!-- Page 1 -->
+            <div class="card has-text-dark mb-5">
+                <div class="card-content">
+                    <div class="content">
+
+                        <!-- Registration detail -->
+                        <div class="columns">
+                            <div class="column is-one-quarter has-text-centered">
+                                <img src="https://www.w3schools.com/howto/img_avatar.png" id="preview_profile_image" class="is-fullwidth" style="height: 250px;">
+                            </div>
+                            <div class="column pt-5">
+                                <div class="title has-text-dark has-text-centered" style="margin-left: -230px;">ใบสมัครงาน</div>
+
+                                <!-- Datetimes -->
+                                <div class="has-text-right has-text-dark mb-4">
+                                    <span class="has-text-weight-bold">วันที่สมัคร :</span> <span id="preview_date_now">00/00/0000</span>
+                                </div>
+
+                                <div class="columns mb-0">
+                                    <div class="column is-one-third has-text-weight-bold py-0">สมัครในตำแหน่ง</div>
+                                    <div class="column py-0 pb-4">: <span id="preview_apply_position">-</span></div>
+                                </div>
+                                <div class="columns mb-0">
+                                    <div class="column is-one-third has-text-weight-bold py-0">รายได้ที่ต้องการ</div>
+                                    <div class="column py-0 pb-4">: <span id="preview_desired_income">-</span> บาท</div>
+                                </div>
+                                <div class="columns mb-0">
+                                    <div class="column is-one-third has-text-weight-bold py-0">วันที่สามารถเริ่มทำงานได้
+                                    </div>
+                                    <div class="column py-0 pb-4">: <span id="preview_work_start">00/00/0000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="columns is-variable is-4">
+                            <!-- Left Content (profile, address, status) -->
+                            <div class="column">
+
+                                <!-- Profile -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">ประวัติส่วนตัว</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ชื่อ - สกุล</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_fullname">ไม่ระบุ</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ชื่อ - สกุล(Eng)</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_efullname">ไม่ระบุ</span></div>
+                                    </div>                                    
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">น้ำหนัก</div>
+                                        <div class="column py-0">: <span id="preview_weight">-</span> ก.ก.</div>
+                                        <div class="column is-one-fifth has-text-weight-bold py-0">ส่วนสูง</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_height">-</span> ซ.ม.</div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">วันเดือนปีเกิด</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_birthday">00/00/0000 (0 ปี 0
+                                                เดือน)</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">สัญชาติ</div>
+                                        <div class="column py-0">: <span id="preview_nationality">-</span></div>
+                                        <div class="column is-one-fifth has-text-weight-bold py-0">เชื้อชาติ</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_race">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ศาสนา</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_religion">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">เลขบัตรประชาชน</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_nationalid">-</span></div>
+                                    </div>                                    
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">เบอร์โทรศัพท์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_telephone">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">อีเมล์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_email">-</span></div>
+                                    </div>
+                                </article>
+
+                                <!-- Address -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">ที่อยู่ปัจจุบัน</h4>
+                                    <hr class="main-line mt-3 mb-2">
+                                    - <span id="preview_address">ไม่ระบุ</span><br>
+                                    - <span id="preview_address_status">ไม่ระบุ</span>
+                                </article>
+
+
+
+
+                                <!-- Status -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">สถานะภาพ</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">การสมรส</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_marital">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">บุตร</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_child">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1" id="preview_military_display">
+                                        <div class="column is-one-third has-text-weight-bold py-0">การทหาร</div>
+                                        <div class="column py-0 pb-4"><span id="preview_military">-</span></div>
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+                            <!-- Right Content (education history) -->
+                            <div class="column">
+                                <!-- Education -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">ประวัติการศึกษา</h4>
+                                    <hr class="main-line mt-3">
+                                    <div id="preview_edu"></div>
+                                </article>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="card has-text-dark mb-5">
+                <div class="card-content">
+                    <div class="content">
+
+                        <!-- Content -->
+                        <div class="columns is-variable is-4">
+                            <!-- Left Content (language, referrence) -->
+                            <div class="column">
+
+                                <!-- Language -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-4">ทักษะทางภาษา</h4>
+                                    <table class="table is-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ภาษา</th>
+                                                <th class="has-text-centered">การฟัง</th>
+                                                <th class="has-text-centered">การพูด</th>
+                                                <th class="has-text-centered">การอ่าน</th>
+                                                <th class="has-text-centered">การเขียน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="preview_language"></tbody>
+                                    </table>
+                                </article>
+
+                                <!-- Training -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-4">ประวัติฝึกอบรม/ดูงาน/ฝึกงาน</h4>
+                                    <table class="table is-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ชื่อหลักสูตร</th>
+                                                <th>สถาบัน</th>
+                                                <th>วุฒิ</th>
+                                                <th>ระยะเวลา</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="preview_training"></tbody>
+                                    </table>
+                                </article>
+								
+                                <!-- Referrence People -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">บุคคลอ้างอิง</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ชื่อ - สกุล</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_ref_name">ไม่ระบุ</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">เบอร์โทรศัพท์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_ref_telephone">ไม่ระบุ</span>
+                                        </div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">สถานที่ทำงาน</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_ref_workstation">ไม่ระบุ</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ตำแหน่ง</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_ref_position">ไม่ระบุ</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Referrence People Mazuma -->
+
+
+                            </div>
+
+                            <!-- Right Content (vehicle, more) -->
+                            <div class="column">
+
+                                <!-- Vehicle -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">ยานพาหนะ</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column has-text-weight-bold py-0 pb-4">ความสามารถในการขับขี่</div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">- รถยนต์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_car_drive">ไม่ระบุ</span>
+                                        </div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">- รถจักรยานยนต์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_motorcycle_drive">ไม่ระบุ</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column has-text-weight-bold py-0 pb-4">ยานพาหนะที่มี</div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">- รถยนต์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_car_owner">ไม่ระบุ</span>
+                                        </div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">- รถจักรยานยนต์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_motorcycle_owner">ไม่ระบุ</span></div>
+                                    </div>
+                                </article>
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">บุคคลที่รู้จักในบริษัท</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ชื่อ - สกุล</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_more_who">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ตำแหน่ง</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_more_who_position">-</span>
+                                        </div>
+                                    </div>
+                                </article>
+ 
+
+                            </div>
+
+                        </div>
+                               <!-- More -->
+                                <article class="mb-5">
+                                    <h4 class="title mb-0">ข้อมูลเพิ่มเติม</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="mb-0 is-variable is-1">
+                                        <div class="has-text-weight-bold py-0">ความบกพร่องของร่างกาย หรือเป็นโรคติดต่อเรื้อรังที่เป็นอุปสรรคต่อการทำงาน</div>
+                                             <span id="preview_congenital_disease"></span>
+                                        
+                                    </div>                    
+                                    <div class="mb-0 is-variable is-1">
+                                        <div class="has-text-weight-bold py-0">เคยเจ็บป่วยหรือได้รับอุบัติเหตุจนต้องเข้ารับการรักษาในโรงพยาบาล</div>
+                                             <span id="preview_hospital"></span>
+                                    </div>                                    
+									<div class="mb-0 is-variable is-1">
+                                        <div class="has-text-weight-bold py-0">สุขภาพโดยทั่วไปของท่าน</div>
+                                             <span id="preview_generalhealth"></span>
+                                    </div>                                    									
+                                    <div class="mb-0 is-variable is-1">
+                                        <div class="has-text-weight-bold py-0">เคยถูกศาลพิพากษาให้เป็นบุคคลล้มละลาย หรือเคยทำผิดทางอาญา</div>
+                                             <span id="preview_crime"></span><br>
+                                    </div>
+                                    <div class="mb-0 is-variable is-1">
+                                        <div class="has-text-weight-bold py-0">ยินยอมให้บริษัทตรวจประวัติอาชญากรรมหรือไม่</div>
+                                             <span id="preview_crimecheck"></span><br>
+                                    </div>									
+                                    <div class="mb-0">
+                            
+                                            <span class="has-text-weight-bold">จุดอ่อนของตนเอง:</span><br>
+                                             <span id="preview_more_weakness" style="white-space: pre-wrap;">ไม่ระบุ</span>
+               
+                                    </div>
+                                    <div class="mb-0">
+                     
+                                            <span class="has-text-weight-bold">จุดแข็งของตนเอง:</span><br>
+                                             <span id="preview_more_strength" style="white-space: pre-wrap;">ไม่ระบุ</span>
+            
+                                    </div>
+                                    <div class="mb-0">
+         
+                                            <span class="has-text-weight-bold">สาเหตุที่สมัครงาน:</span><br>
+                                             <span id="preview_more_reason" style="white-space: pre-wrap;">ไม่ระบุ</span>
+										
+                                    </div>
+									
+                                </article>
+                                <!-- Person Contact for emergency-->
+							
+                        <!-- Working history -->
+                        <article class="mb-5">
+                            <h4 class="title mb-0">ประวัติการทำงาน</h4>
+                            <hr class="main-line mt-3">
+                            <div id="preview_work"></div>
+                        </article>
+						 <article class="mb-5">
+                                    <h4 class="title mb-0">บุคคลที่สามารถติดต่อได้ในกรณีเร่งด่วน</h4>
+                                    <hr class="main-line mt-3">
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ชื่อ</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_namecontact">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1">
+                                        <div class="column is-one-third has-text-weight-bold py-0">ความสัมพันธ์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_relationcontact">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1" >
+                                        <div class="column is-one-third has-text-weight-bold py-0">โทรศัพท์</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_telcontact">-</span></div>
+                                    </div>
+                                    <div class="columns mb-0 is-variable is-1" >
+                                        <div class="column is-one-third has-text-weight-bold py-0">ที่อยู่</div>
+                                        <div class="column py-0 pb-4">: <span id="preview_addresscontact">-</span></div>
+                                    </div>
+									
+                                </article>	
+                            <p>✅ ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูลส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า สำหรับให้บริษัทพิจารณาคุณสมบัติ ว่ามีความเหมาะสมกับกับตำแหน่งงานที่ทางบริษัทฯ เปิดรับ พร้อมทั้งนำข้อมูลส่วนบุคคลไปใช้ในด้านการพัฒนาการบริหารงานบุคคลากรในแง่อันเป็นประโยชน์ได้<br>
+							✅ ข้าพเจ้าขอรับรองว่า ข้อความที่ข้าพเจ้าระบุไว้ในสมัครงานนี้ ถูกต้องและเป็นจริงทุกประการ ข้าพเจ้ายินยอมให้บริษัทฯ สอบประวัติเกี่ยวกับตัวข้าพเจ้าได้ และหากข้าพเจ้าได้รับการพิจารณาเข้าทำงาน และบริษัทตรวจสอบว่าข้อความที่ให้ไว้ไม่ตรงกับความจริง ข้าพเจ้ายินดีให้บริษัทฯ ยกเลิกสัญญาจ้างของข้าพเจ้าทันที โดยข้าพเจ้าจะไม่เรียกร้องค่าสินไหมทดแทนหรือเงินชดเชยใดๆ ทั้งสิ้นจากบริษัทฯ
+							</p> 
+                            <div class="field is-grouped is-grouped-centered mt-4">
+                                <div class="control">
+                                    <div class="col-md-6" >
+                                        <img id="signimgs" src="" style="width:275px; height:75px" alt="">
+                                          <input id="SignupImage1" hidden  />
+                                    </div>    
+                                </div>
+                            </div>  
+                            <div class="field is-grouped is-grouped-centered mt-4">	<span id="preview_more_fnfooter" style="white-space: pre-wrap;"></span></div>
+              </div>
+             </div>
+            </div>
+
+            <!-- Button -->
+
+            <div class="field is-grouped is-grouped-centered mt-4">
+                
+                <div class="control">
+                    <button class="button is-success" type="button" id="print_btn">
+                        <span class="icon">
+                            <i class="fas fa-print"></i>
+                        </span>
+                        <span>ปริ้นท์/พิมพ์</span>
+                    </button>
+                </div>
+                <div class="control">
+                    <a class="button is-success" id="download_btn" download="ใบสมัครงาน.pdf">
+                        <span class="icon">
+                            <i class="fas fa-download"></i>
+                        </span>
+                        <span>ดาวน์โหลด</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END PREVIEW -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+
+    <!-- PDFMake CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+<!-- Bulma Calendar JS -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bulma-calendar/dist/js/bulma-calendar.min.js"></script> -->
+
+    <!-- duDatepicker CDN -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dmuy/duDatepicker@2.0.0/dist/duDatepicker.js"></script>
+    <!-- SweetAlert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- jQuert Validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2"></script>
+
+    <!-- Autocomplete Thailand Address Form -->
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+
+    <!-- PrintJS CDN -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.0.63/print.min.js"></script>
+    <!-- Custom JS -->
+   <!--  <script src="assets/js/main.js"></script> --> 
+	<script type="text/javascript" src="applicationform.js?v=003"></script>
+	
+    <script>
+ 
+
+$(document).ready(function() {
+   $("em").addClass("selected");
+   $("#myid").addClass("highlight");
+});
+
+	</script>
+	
+
+                             
+</body>
+</html>
